@@ -12,6 +12,5 @@ export const Home = () => {
 const styles = css`
   .page-home {
     @apply p-10;
-    @apply border border-black border-dotted;
   }
 `;

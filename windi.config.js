@@ -4,5 +4,12 @@ export default defineConfig({
   extract: {
     include: ["src/**/*.{html,vue,jsx,tsx,svelte,ejs}"],
   },
+  theme: {
+    extend: {
+      screens: {
+        xs: "320px",
+      },
+    },
+  },
   /* ... */
 });
