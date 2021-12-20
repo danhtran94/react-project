@@ -1,16 +1,9 @@
-import css from "styled-jsx/css";
+import { css } from "@linaria/core";
 
 export const Home = () => {
-  return (
-    <div className="page-home">
-      Home page
-      <style jsx>{styles}</style>
-    </div>
-  );
+  return <div className={clPageHome}>Home page</div>;
 };
 
-const styles = css`
-  .page-home {
-    @apply p-10;
-  }
+var clPageHome = css`
+  @apply p-10;
 `;

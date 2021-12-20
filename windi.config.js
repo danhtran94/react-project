@@ -1,6 +1,6 @@
 import { defineConfig } from "windicss/helpers";
 
-export default defineConfig({
+const config = defineConfig({
   extract: {
     include: ["src/**/*.{html,vue,jsx,tsx,svelte,ejs}"],
   },
@@ -13,3 +13,5 @@ export default defineConfig({
   },
   /* ... */
 });
+
+export default config;

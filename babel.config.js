@@ -24,8 +24,6 @@ module.exports = function (api) {
         },
       ],
     ],
-    plugins: [
-      ["styled-jsx/babel", { optimizeForSpeed: true, plugins: ["styled-jsx-plugin-postcss"], sourceMaps: true }],
-    ].concat(isProd ? [] : ["react-refresh/babel"]),
+    plugins: [].concat(isProd ? [] : ["react-refresh/babel"]),
   };
 };

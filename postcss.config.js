@@ -7,7 +7,6 @@ module.exports = {
     }),
     require("postcss-mixins"),
     require("postcss-nested"),
-    require("postcss-windicss"),
     process.env.NODE_ENV === "production" && require("autoprefixer"),
     process.env.NODE_ENV === "production" &&
       require("cssnano")({

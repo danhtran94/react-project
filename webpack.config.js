@@ -1,22 +1,19 @@
-import { fileURLToPath } from "url";
-import path, { dirname } from "path";
+const path = require("path");
 
-import webpack from "webpack";
-import pluginHTML from "html-webpack-plugin";
-import pluginCSSExtract from "mini-css-extract-plugin";
-import pluginCopy from "copy-webpack-plugin";
-import pluginENV from "dotenv-webpack";
-import pluginReactFR from "@pmmmwh/react-refresh-webpack-plugin";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const webpack = require("webpack");
+const pluginHTML = require("html-webpack-plugin");
+const pluginCSSExtract = require("mini-css-extract-plugin");
+const pluginWindiCSS = require("windicss-webpack-plugin");
+const pluginCopy = require("copy-webpack-plugin");
+const pluginENV = require("dotenv-webpack");
+const pluginReactFR = require("@pmmmwh/react-refresh-webpack-plugin");
 
 const isProd = process.env.NODE_ENV === "production";
 const devPort = 8080;
 const hashLength = 6;
 
 const config = {
-  entry: ["./src/styles/index.pcss", "./src/main.tsx"],
+  entry: ["./src/styles/index.css", "./src/main.tsx"],
   mode: isProd ? "production" : "development",
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -34,7 +31,16 @@ const config = {
     rules: [
       {
         test: /\.(ts|js)x?$/,
-        loader: "babel-loader",
+        use: [
+          { loader: "babel-loader" },
+          {
+            loader: "@linaria/webpack-loader",
+            options: {
+              displayName: true,
+              sourceMap: !isProd,
+            },
+          },
+        ],
         exclude: /node_modules/,
       },
       {
@@ -48,9 +54,9 @@ const config = {
           isProd ? pluginCSSExtract.loader : "style-loader",
           {
             loader: "css-loader",
-            options: { importLoaders: 1 },
+            // options: { importLoaders: 1 },
           },
-          "postcss-loader",
+          // "postcss-loader",
         ],
       },
       {
@@ -92,6 +98,7 @@ const config = {
     new pluginCopy({
       patterns: [{ from: path.resolve(__dirname, "public"), to: "" }],
     }),
+    new pluginWindiCSS(),
   ].concat(
     isProd
       ? // @ts-ignore
@@ -133,4 +140,4 @@ config.optimization = {
   },
 };
 
-export default config;
+module.exports = config;
