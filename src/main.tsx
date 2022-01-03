@@ -1,5 +1,11 @@
 import "windi.css";
+import { StrictMode } from "react";
 import { render } from "react-dom";
 import { Root } from "./Root";
 
-render(<Root />, document.getElementById("root"));
+render(
+  <StrictMode>
+    <Root />
+  </StrictMode>,
+  document.getElementById("root")
+);
