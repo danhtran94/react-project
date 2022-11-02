@@ -1,28 +1,29 @@
 import clsx from "clsx";
-import { FC } from "react";
+import { FC, PropsWithChildren } from "react";
 import { css } from "@linaria/core";
-import { clScrollInvisible } from "@src/styles/utils";
+import { utils } from "@src/styles/utils";
 
-export const Page: FC<{ className?: string }> = ({ children, className }) => {
+export const Page: FC<PropsWithChildren<{ className?: string }>> = ({ children, className }) => {
   return (
-    <div className={clsx(clPage, className)}>
-      <div className={clPageBody}>{children}</div>
-      <div className="page-footer">Footer</div>
+    <div className={clsx(styles.base, className)}>
+      <div className={styles.body}>{children}</div>
+      <div className={styles.footer}>Footer</div>
     </div>
   );
 };
 
-var clPage = clsx(
-  css`
-    @apply flex flex-col;
+const styles = {
+  base: clsx(
+    css`
+      @apply flex flex-col;
+      /* expand available height */
+      @apply overflow-scroll;
+    `,
+    utils.scrollInvisible
+  ),
+  body: css`
     /* expand available height */
-    @apply overflow-scroll;
+    @apply flex-grow;
   `,
-  clScrollInvisible
-);
-
-/* clPage & */
-var clPageBody = css`
-  /* expand available height */
-  @apply flex-grow;
-`;
+  footer: css``,
+};

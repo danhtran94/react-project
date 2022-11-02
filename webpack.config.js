@@ -34,8 +34,9 @@ const config = {
         use: [
           { loader: "babel-loader" },
           {
-            loader: "@linaria/webpack-loader",
+            loader: "@linaria/webpack5-loader",
             options: {
+              classNameSlug: (hash, title, args) => `${args.dir}_${args.name}_${title}`,
               displayName: true,
               sourceMap: !isProd,
             },
@@ -114,7 +115,7 @@ const config = {
         ]
       : [new pluginReactFR()]
   ),
-  devtool: isProd ? false : "eval-cheap-module-source-map",
+  devtool: isProd ? false : "source-map",
   devServer: {
     historyApiFallback: true,
     hot: true,

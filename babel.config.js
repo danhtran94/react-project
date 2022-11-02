@@ -23,6 +23,7 @@ module.exports = function (api) {
           corejs: 3,
         },
       ],
+      "@linaria",
     ],
     plugins: [].concat(isProd ? [] : ["react-refresh/babel"]),
   };
