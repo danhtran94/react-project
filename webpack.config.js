@@ -3,7 +3,6 @@ const path = require("path");
 const webpack = require("webpack");
 const pluginHTML = require("html-webpack-plugin");
 const pluginCSSExtract = require("mini-css-extract-plugin");
-const pluginWindiCSS = require("windicss-webpack-plugin");
 const pluginCopy = require("copy-webpack-plugin");
 const pluginENV = require("dotenv-webpack");
 const pluginReactFR = require("@pmmmwh/react-refresh-webpack-plugin");
@@ -36,8 +35,6 @@ const config = {
           {
             loader: "@linaria/webpack5-loader",
             options: {
-              classNameSlug: (hash, title, args) => `${args.dir}_${args.name}_${title}`,
-              displayName: true,
               sourceMap: !isProd,
             },
           },
@@ -55,9 +52,9 @@ const config = {
           isProd ? pluginCSSExtract.loader : "style-loader",
           {
             loader: "css-loader",
-            // options: { importLoaders: 1 },
+            options: { importLoaders: 1 },
           },
-          // "postcss-loader",
+          "postcss-loader",
         ],
       },
       {
@@ -99,7 +96,6 @@ const config = {
     new pluginCopy({
       patterns: [{ from: path.resolve(__dirname, "public"), to: "" }],
     }),
-    new pluginWindiCSS(),
   ].concat(
     isProd
       ? // @ts-ignore

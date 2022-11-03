@@ -25,6 +25,26 @@ module.exports = function (api) {
       ],
       "@linaria",
     ],
-    plugins: [].concat(isProd ? [] : ["react-refresh/babel"]),
+    plugins: [
+      [
+        "babel-plugin-macros",
+        {
+          twin: {
+            styled: {
+              import: "styled",
+              from: "@linaria/react",
+            },
+            css: {
+              import: "css",
+              from: "@linaria/core",
+            },
+            global: {
+              import: "css",
+              from: "@linaria/core",
+            },
+          },
+        },
+      ],
+    ].concat(isProd ? [] : ["react-refresh/babel"]),
   };
 };

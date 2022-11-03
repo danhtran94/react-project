@@ -1,4 +1,4 @@
-import { css } from "@linaria/core";
+import tw, { css, styled } from "twin.macro";
 import { Outlet } from "react-router-dom";
 import { Page } from "@src/pages/Page";
 
@@ -28,7 +28,7 @@ const styles = {
   `,
   sidebarHeader: css`
     @apply h-12 max-h-12 min-w-12;
-    @apply md:(h-16 max-h-16 min-w-16);
+    @apply md:h-16 md:max-h-16 md:min-w-16;
     @apply bg-blue-200;
   `,
   body: css`
@@ -38,7 +38,7 @@ const styles = {
   `,
   header: css`
     @apply h-12 min-h-12 max-h-12;
-    @apply md:(h-16 min-h-16 max-h-16);
+    @apply md:h-16 md:min-h-16 md:max-h-16;
     @apply bg-blue-200;
   `,
   page: css`
