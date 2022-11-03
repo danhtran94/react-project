@@ -1,13 +1,8 @@
 module.exports = {
   evaluate: true,
   displayName: true,
-  // classNameSlug: (hash, title, { file }) => {
-  //   return `${(file + "")
-  //     .split("/")
-  //     .pop()
-  //     .replace(/(.tsx?|.jsx?)/, "")}-${title}__${hash}`;
-  // },
-  classNameSlug: (hash, title, args) => `${args.dir}_${args.name}_${title}`,
+  preprocessor: "none", // we use postcss
+  classNameSlug: (hash, title, args) => `${args.dir}_${args.name}_${title}--${hash}`,
   tagResolver: (source, tag) => {
     if (source === "twin.macro") {
       if (tag === "css") {

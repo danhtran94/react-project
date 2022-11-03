@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import { LayoutMain } from "@src/layouts/Main";
-import { Home } from "@src/pages/home/Home";
+import { LayoutMain } from "@src/layouts/main";
+import { Home } from "@src/pages/home";
 
 import { useDispatch } from "@src/store/hooks";
 

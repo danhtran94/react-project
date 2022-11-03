@@ -1,6 +1,6 @@
 import tw, { css, styled } from "twin.macro";
 import { Outlet } from "react-router-dom";
-import { Page } from "@src/pages/Page";
+import { Page } from "@src/layouts/page";
 
 export function LayoutMain() {
   return (
