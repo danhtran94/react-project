@@ -29,6 +29,11 @@ const config = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        use: ["source-map-loader"],
+        enforce: "pre",
+      },
+      {
         test: /\.(ts|js)x?$/,
         use: [
           { loader: "babel-loader" },
@@ -40,11 +45,6 @@ const config = {
           },
         ],
         exclude: /node_modules/,
-      },
-      {
-        test: /\.js$/,
-        use: ["source-map-loader"],
-        enforce: "pre",
       },
       {
         test: /\.(post|p)?css$/,
